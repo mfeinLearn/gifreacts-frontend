@@ -1,10 +1,25 @@
 // synchronous action creators
 // - import axios from 'axios';
 
-export const setGifs = gifs => {
+export const setGif = gif => {
   return {
-    type: "SET_GIFS",
-    gifs
+    type: "SET_GIF",
+    gif
+  }
+}
+
+export const addGif = () => {
+  return dispatch => {
+    return fetch("http://localhost:3001/api/v1/gif", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+        }
+      })
+    .then(r => r.json())
+    .then(response => {
+      dispatch(setGif(console.log(response)))
+    })
   }
 }
 // do last
