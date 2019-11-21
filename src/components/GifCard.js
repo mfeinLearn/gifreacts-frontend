@@ -1,5 +1,5 @@
-
 import React from 'react';
+import GifForm from './GifForm.js'
 
 class GifCard extends React.Component {
   constructor(props) {
@@ -46,7 +46,7 @@ class GifCard extends React.Component {
           alt={title}
           src={images.downsized.url}
         />
-
+        <GifForm />
       </div>
     );
   }
