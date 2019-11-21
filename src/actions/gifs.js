@@ -1,4 +1,5 @@
 // synchronous action creators
+// - import axios from 'axios';
 
 export const setGifs = gifs => {
   return {
@@ -9,7 +10,7 @@ export const setGifs = gifs => {
 // do last
 
 // VVV testing something
-// export const getMyTrips = () => {
+// export const setGifs = gifs => {
 //   return dispatch => {
 //     return fetch("http://localhost:3001/api/v1/trips", {
 //       credentials: "include",
@@ -30,3 +31,12 @@ export const setGifs = gifs => {
 //     .catch(console.log)
 //   }
 // }
+
+// works
+// export const setGifs = gifs => {
+//   return {
+//     type: "SET_GIFS",
+//     gifs
+//   }
+// }
+//works
