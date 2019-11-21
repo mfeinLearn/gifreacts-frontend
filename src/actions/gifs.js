@@ -18,7 +18,7 @@ export const addGif = () => {
       })
     .then(r => r.json())
     .then(response => {
-      dispatch(setGif(console.log(response)))
+      dispatch(setGif(response.data)))
     })
   }
 }
