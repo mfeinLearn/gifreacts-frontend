@@ -3,7 +3,8 @@ import './App.css';
 import axios from './api/axios.js'
 import NavBar from './components/NavBar.js'
 import SearchBar from './components/SearchBar.js';
-import GifCard from './components/GifCard.js'
+import GifList from './components/GifList.js'
+
 
 class App extends React.Component {
   state = { gif: [] }
@@ -26,7 +27,7 @@ class App extends React.Component {
       <div className="ui container" style={{ marginTop: '10px' }}>
         <NavBar/>
         <SearchBar onSubmit={this.onSearchSubmit}/>
-        <GifCard gif={this.state.gif}/>
+        <GifList gif={this.state.gif}/>
         {/* Found: {this.state.gifs.length} gifs */}
       </div>
     );
