@@ -6,6 +6,7 @@ import SearchBar from './components/SearchBar.js';
 import SingleGif from './components/SingleGif.js'
 
 
+
 class App extends React.Component {
   state = { gif: [] }
 
@@ -28,6 +29,7 @@ class App extends React.Component {
         <NavBar/>
         <SearchBar onSubmit={this.onSearchSubmit}/>
         <SingleGif gif={this.state.gif}/>
+
         {/*<GifList gif={this.state.gif}/>*/}
         {/* Found: {this.state.gifs.length} gifs */}
       </div>
