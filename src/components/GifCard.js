@@ -47,13 +47,21 @@ class GifCard extends React.Component {
           alt={title}
           src={images.downsized.url}
         />
+
       </div>
     );
   }
 }
 
-export default GifCard;
+// const mapStateToProps = state => {// getting this state from the store
+//   return {
+//     gifs: state.gifs
+//   }
+// }
 
+// export default connect(mapStateToProps, {}) (GifCard);
+export default GifCard;
+        // <GifItem gif={this.props.gif} />
 ////////////////////////////////
 // import React from 'react';
 //
