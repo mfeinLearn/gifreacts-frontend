@@ -15,7 +15,7 @@ class GifForm extends React.Component {
 
   onFormSubmit = event => {
     event.preventDefault();
-    this.props.addGif(this.state) // not from here just testing shit out :D
+    this.props.addGif(this.state.aGif) //  not from here just testing stuff out :D
     //console.log(this.state.aGif)
     // console.log(this.state.humer_type)
 
