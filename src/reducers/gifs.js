@@ -1,5 +1,7 @@
 export default (state = [], action) => {
   switch (action.type) {
+    case "SET_GIF":
+      //return action.gif
     default:
       return state
   }
