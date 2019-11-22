@@ -10,12 +10,12 @@ class GifForm extends React.Component {
   state = {
     emotion: '',
     humer_type: '',
-    aGif: this.props.gif.images.downsized.url
+    name: this.props.gif.images.downsized.url
   };
 
   onFormSubmit = event => {
     event.preventDefault();
-    this.props.addGif(this.state.aGif) //  not from here just testing stuff out :D
+    this.props.addGif(this.state) //  not from here just testing stuff out :D
     //console.log(this.state.aGif)
     // console.log(this.state.humer_type)
 
