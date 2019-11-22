@@ -10,19 +10,19 @@ export const setGif = gif => {
 
 export const addGif = (gifData) => {
   return dispatch => {
-    console.log(gifData)
+    console.log(gifData)// this has to be an object
     return fetch("http://localhost:3001/api/v1/gifs", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
         },
-      body: JSON.stringify(gifData)
+      body: JSON.stringify(gifData)//make the data into a string
       })
     .then(r => r.json())
     .then(response => {
-      console.log("response")
-      dispatch(setGif(response.data))
-      debugger
+      console.log("response object:", response)
+      dispatch(setGif(response))
+    //  debugger
     })
   }
 }
