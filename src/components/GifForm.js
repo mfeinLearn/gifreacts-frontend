@@ -10,12 +10,12 @@ class GifForm extends React.Component {
   state = {
     emotion: '',
     humer_type: '',
-    name: this.props.gif.images.downsized.url
+    name: this.props.gif.images.downsized.url //  add changes to dispatch the setGif action with a response from the giffy api
   };
 
   onFormSubmit = event => {
     event.preventDefault();
-    this.props.addGif(this.state) //  not from here just testing stuff out :D
+    this.props.addGif(this.state)
     //console.log(this.state.aGif)
     // console.log(this.state.humer_type)
 
