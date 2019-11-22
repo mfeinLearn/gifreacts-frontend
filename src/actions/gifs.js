@@ -10,7 +10,8 @@ export const setGif = gif => {
 
 export const addGif = (gifData) => {
   return dispatch => {
-    return fetch("http://localhost:3001/api/v1/gif", {
+    console.log(gifData)
+    return fetch("http://localhost:3001/api/v1/gifs", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -21,7 +22,7 @@ export const addGif = (gifData) => {
     .then(response => {
       console.log("response")
       dispatch(setGif(response.data))
-      //debugger
+      debugger
     })
   }
 }
