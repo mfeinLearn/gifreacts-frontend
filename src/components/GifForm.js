@@ -1,6 +1,6 @@
 import React from 'react'
-//import { connect } from 'react-redux'
-//import { addGif } from "../actions/gifs.js"
+import { connect } from 'react-redux'
+import { addGif } from "../actions/gifs.js"
 
 class GifForm extends React.Component {
   // constructor(props) {
@@ -15,7 +15,7 @@ class GifForm extends React.Component {
 
   onFormSubmit = event => {
     event.preventDefault();
-    addGif(this.state) // not from here just testing shit out :D
+    this.props.addGif(this.state) // not from here just testing shit out :D
     //console.log(this.state.aGif)
     // console.log(this.state.humer_type)
 
@@ -47,7 +47,7 @@ class GifForm extends React.Component {
   }
 }
 
-export default GifForm;
+export default connect(null, { addGif })(GifForm)
 
 // I still need....
 
