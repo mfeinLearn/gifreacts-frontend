@@ -5,7 +5,9 @@ import NavBar from './components/NavBar.js'
 import SearchBar from './components/SearchBar.js';
 import SingleGif from './components/SingleGif.js'
 import GifList from './components/GifList.js'
-
+import Blank from './components/Blank.js'
+//import { Route, Switch, withRouter} from 'react-router-dom'
+import { BrowserRouter as Router,Route} from 'react-router-dom'
 
 
 class App extends React.Component {
@@ -31,6 +33,9 @@ class App extends React.Component {
         <SearchBar onSubmit={this.onSearchSubmit}/>
         <SingleGif gif={this.state.gif}/>
         <GifList />
+        <Router>
+          <Route exact path='/blank' component={Blank}/>
+        </Router>
         {/*<GifList gif={this.state.gif}/>*/}
         {/* Found: {this.state.gifs.length} gifs */}
       </div>
