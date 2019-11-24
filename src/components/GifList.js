@@ -5,7 +5,11 @@ import { connect } from 'react-redux'
 const GifList = props => {
   // console.log(props.gif[0])
   const gifs = props.gifs.map((gif) => {
-    return <img src={gif.name} />
+    return(
+
+      <img height="200" width="200" src={gif.name} />
+
+    );
   });
 
   return gifs;
