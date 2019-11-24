@@ -1,12 +1,14 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom'
 // import { connect } from 'react-redux'
 
 const NavBar = () => {
   return (
     <div className="NavBar">
-        <span role="img" aria-labelledby="myNameId">😖 😞 😟 😤 😢 😭 😦 😧 😨 😩</span>
-       <h2>Welcome to Gif React!</h2>
-        <span role="img" aria-labelledby="myNameId">😀 😁 😂 😊 😋 😎 😍 😑 😶 🙄</span>
+      <NavLink exact activeClass to="/home">Home |  </NavLink>
+      <NavLink exact activeClass to="/gifs">All Gifs |  </NavLink>
+      <NavLink exact activeClass to="/gifs/new">New Gif  |  </NavLink>
+      <NavLink exact activeClass to="/blank">Blank </NavLink>
     </div>
   )
 }
