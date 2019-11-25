@@ -1,5 +1,5 @@
 import React from 'react';
-import GifCard from './GifCard'
+// import GifCard from './GifCard'
 import { connect } from 'react-redux'
 
 const GifList = props => {
@@ -7,7 +7,7 @@ const GifList = props => {
   const gifs = props.gifs.map((gif) => {
     return(
 
-      <img height="200" width="200" src={gif.name} />
+      <img height="200" width="200" alt="" src={gif.name} />
 
     );
   });
