@@ -1,14 +1,22 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 //NavLink - are great for nav bars when
 //.. you are going to see those links all times
 // Link - is a one time thing
-const AllGifs = () => (
-  <div>
-    <span>
-      <Link>I am AllGifs</Link>
-    </span>
-  </div>
-);
+const AllGifs = (props) => {
+  const gifs = props.gifs.map((gif) => {
+    return(
+      <img height="200" width="200" alt="" src={gif.name} />
+    );
+  });
 
-export default AllGifs;
+  return gifs;
+};
+
+
+const mapStateToProps = (state) => {
+  return {gifs: state.gifs}
+}
+
+export default connect(mapStateToProps)(AllGifs);
