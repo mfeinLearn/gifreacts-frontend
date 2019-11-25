@@ -2,6 +2,8 @@ export default (state = [], action) => {
   switch (action.type) {
     case "SET_GIF":
       return [...state, action.gif]
+    // case "SET_RESPONSE_DATA":
+    //   return [...state, action.gif]
     default:
       return state
   }
