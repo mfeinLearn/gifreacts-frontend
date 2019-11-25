@@ -1,11 +1,12 @@
 import React from 'react';
 import './App.css';
-//import { connect } from 'react-redux'
-import axios from './api/axios.js'
+// import { connect } from 'react-redux'
+// import axios from './api/axios.js'
+// import { setGifResponseData } from './actions/gifs.js'
 import NavBar from './components/NavBar.js'
-import SearchBar from './components/SearchBar.js';
-import SingleGif from './components/SingleGif.js'
-import GifList from './components/GifList.js'
+// import SearchBar from './components/SearchBar.js';
+// import SingleGif from './components/SingleGif.js'
+// import GifList from './components/GifList.js'
 import Home from './components/Home.js'
 import Blank from './components/Blank.js'
 import AllGifs from './components/AllGifs.js'
@@ -15,27 +16,32 @@ import { BrowserRouter as Router,Route} from 'react-router-dom'
 
 
 class App extends React.Component {
-  state = { gif: [] }
+  //1
+   // state = { gif: [] }
 
-
-  onSearchSubmit = async (term) => {
-    let APIKEY = "u4yJyilMJDYdNFQJPkHKp0I0ptWfSFJs";
-    let url = `/search?api_key=${APIKEY}`;
-    const response = await axios.get(url, {
-      params: {q: term, limit: 1}
-    })
-    // response.data.data
-    // this will cause our component to rerender
-    this.setState({ gif: response.data.data });
-    //console.log(response.data.data)
-  }
+//2
+  // onSearchSubmit = async (term) => {
+  //   let APIKEY = "u4yJyilMJDYdNFQJPkHKp0I0ptWfSFJs";
+  //   let url = `/search?api_key=${APIKEY}`;
+  //   const response = await axios.get(url, {
+  //     params: {q: term, limit: 1}
+  //   })
+  //   // response.data.data
+  //   // this will cause our component to rerender
+  //   //this.props.setGifResponseData(response.data.data)
+  //       this.setState({ gif: response.data.data });
+  //   //console.log(response.data.data)
+  // }
 
   render() {
     return (
       <div className="ui container" style={{ marginTop: '10px' }}>
-          {/*// <SearchBar onSubmit={this.onSearchSubmit}/>*/}
-          {/*   // <SingleGif gif={this.state.gif}/>*/}
-        {/*  // <GifList /> */}
+      {/*//3
+      // <SearchBar onSubmit={this.onSearchSubmit}/>
+      // <SingleGif gif={this.state.gif}/>
+      // <GifList gif={this.state.gif}/>
+      // <GifList />
+      */}
           <Router>
             <NavBar/>
             <Switch>
@@ -47,7 +53,7 @@ class App extends React.Component {
             <Route exact path='/blank' component={Blank}/>
             </Switch>
           </Router>
-          {/*<GifList gif={this.state.gif}/>*/}
+
           {/* Found: {this.state.gifs.length} gifs */}
       </div>
     );
@@ -55,6 +61,7 @@ class App extends React.Component {
 }
 
 export default App;
+//export default connect(null, {setGifResponseData})(App);
 
 // let APIKEY = ""
 // let url = `https://api.giphy.com/v1/gifs/search?api_key=${APIKEY}&limit=1&q=`;
