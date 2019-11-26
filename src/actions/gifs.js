@@ -21,8 +21,9 @@ export const addGif = (gifData) => {
     .then(r => r.json())
     .then(response => {
       console.log("response object:", response)
-      // debugger
-      dispatch(setGif(response.data))
+      //debugger
+      const newVar = {...response.data,emotion: response.included[0], humer_type: response.included[1]}
+      dispatch(setGif(newVar))
     })
   }
 }
