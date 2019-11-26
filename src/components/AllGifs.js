@@ -7,7 +7,13 @@ import { connect } from 'react-redux'
 const AllGifs = (props) => {
   const gifs = props.gifs.map((gif) => {
     return(
+      <div>
       <img height="200" width="200" alt={gif.attributes.name} src={gif.attributes.name} />
+      <br />
+      name: {gif.emotion.attributes.name}
+      <br />
+      range: {gif.humer_type.attributes.range}
+      </div>
     );
   });
 
