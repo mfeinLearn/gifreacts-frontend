@@ -21,8 +21,8 @@ export const addGif = (gifData) => {
     .then(r => r.json())
     .then(response => {
       console.log("response object:", response)
+      // debugger
       dispatch(setGif(response))
-    //  debugger
     })
   }
 }
