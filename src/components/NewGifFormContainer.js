@@ -34,7 +34,7 @@ render() {
         <SearchBar onSubmit={this.onSearchSubmit}/>
         <SingleGif gif={this.state.gif}/>
         <GifList gif={this.state.gif}/>
-        <GifList />
+        {/*// <GifList />*/}
       </div>
     )
   }
