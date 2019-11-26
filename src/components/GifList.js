@@ -9,10 +9,13 @@ const GifList = props => {
 
       <img height="200" width="200" alt={gif.attributes.name} src={gif.attributes.name} />
 
+
     );
   });
 
-  return gifs;
+  return (
+    gifs
+  );
 };
 
 const mapStateToProps = (state) => {
