@@ -22,7 +22,7 @@ export const addGif = (gifData) => {
     .then(response => {
       console.log("response object:", response)
       // debugger
-      dispatch(setGif(response))
+      dispatch(setGif(response.data))
     })
   }
 }
