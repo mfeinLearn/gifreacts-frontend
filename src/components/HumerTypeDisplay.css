@@ -1,0 +1,44 @@
+.icon-left {
+  position: absolute;
+  /* top: 5px;
+  left: 5px; */
+}
+
+
+.icon-right {
+  position: absolute;
+  /* bottom: 5px;
+  right: 5px; */
+}
+
+.humer-type-display {
+  /* display: flex;
+  justify-content: flex-start; */
+  /* align-items: center; */
+}
+
+.humer-type-display.ok i {
+  color: blue;
+}
+
+.humer-type-display.funny i {
+  color: green;
+}
+
+.humer-type-display.rotfl i {
+  color: gold;
+}
+
+
+
+.ok {
+  background-color: aliceblue;
+}
+
+.funny {
+  background-color: orange;
+}
+
+.rotfl {
+  background-color: green;
+}
