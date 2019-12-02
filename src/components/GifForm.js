@@ -24,9 +24,26 @@ class GifForm extends React.Component {
     // console.log(this.state.term)
   }
 
+  // renderEditAndDeleteButtons(){
+  //   return (
+  //     <div className="floated content">
+  //        <button className="ui button primary">
+  //         Edit
+  //     </button>
+  //       <button className="ui button negative">
+  //         Delete
+  //       </button>
+  //     </div>
+  //   );
+  // }
+
   render() {
   return (
-    <form onSubmit={this.onFormSubmit}>
+    <form className="item" onSubmit={this.onFormSubmit}>
+    {/*  // {this.renderEditAndDeleteButtons()} */}
+      <br />
+      <label><strong>Create a Gif React-ion:</strong></label>
+      <br />
       <input
         placeholder="emotion"
         name="emotion"
