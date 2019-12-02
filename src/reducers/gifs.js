@@ -1,8 +1,11 @@
 export default (state = [], action) => {
   switch (action.type) {
     case "SET_GIF":
-    //debugger
-      return [...state, action.gif]
+      return [action.gif] //[{},{}]
+    // case "SET_GIF":
+    //   return [...state, action.gif] //[{},{}] - good anna study
+    case "ADD_A_GIF":
+      return state.concat(action.gif)
     default:
       return state
   }
@@ -18,3 +21,15 @@ export default (state = [], action) => {
 //.. default state of all of your reducers
 
 // default = name what ever I want in index.js
+
+///////////////////////////////
+// export default (state = [], action) => {
+//   switch (action.type) {
+//     case "SET_GIF":
+//     debugger
+//       return [...state, action.gif] //[{},{}]
+//     default:
+//       return state
+//   }
+// }
+///////////////////////////////
