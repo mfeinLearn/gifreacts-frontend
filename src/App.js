@@ -3,6 +3,8 @@ import './App.css';
 import { connect } from 'react-redux'
 // import axios from './api/axios.js'
 // import { setGifResponseData } from './actions/gifs.js'
+// import { fetchGifs } from './actions/gifs.js'
+
 import NavBar from './components/NavBar.js'
 // import SearchBar from './components/SearchBar.js';
 // import SingleGif from './components/SingleGif.js'
@@ -10,8 +12,8 @@ import NavBar from './components/NavBar.js'
 import Home from './components/Home.js'
 import Blank from './components/Blank.js'
 import AllGifs from './components/AllGifs.js'
-import NewGifFormContainer from './components/NewGifFormContainer.js'
-import EditGifFormContainer from './components/EditGifFormContainer.js'
+import NewGifFormContainer from './containers/NewGifFormContainer.js'
+import EditGifFormContainer from './containers/EditGifFormContainer.js'
 import GifShowCard from './components/GifShowCard.js'
 import {Switch} from 'react-router-dom'
 import { BrowserRouter as Router,Route, withRouter} from 'react-router-dom'
@@ -21,6 +23,10 @@ import { BrowserRouter as Router,Route, withRouter} from 'react-router-dom'
 class App extends React.Component {
   //1
    // state = { gif: [] }
+
+   // componentDidMount() {
+   //    this.props.fetchGifs()
+   //  }
 
 //2
   // onSearchSubmit = async (term) => {
