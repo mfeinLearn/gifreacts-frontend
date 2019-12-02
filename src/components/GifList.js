@@ -7,7 +7,7 @@ const GifList = props => {
   const gifs = props.gifs.map((gif) => {
     return(
 
-      <img height="200" width="200" alt={gif.attributes.name} src={gif.attributes.name} />
+      <li key={gif.id}><img height="200" width="200" alt={gif.attributes.name} src={gif.attributes.name} /></li>
 
 
     );
