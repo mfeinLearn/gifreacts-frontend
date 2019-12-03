@@ -1,7 +1,7 @@
-export const setGif = gif => {
+export const setGif = gifs => {
   return {
-    type: "SET_GIF",
-    gif
+    type: "SET_GIFS",
+    gifs
   }
 }
 export const addAGif = gif => {
@@ -27,8 +27,8 @@ export const addGif = (gifData) => {
     .then(response => {
       console.log("response object:", response)
       //debugger
-      const newVar = {...response.data,emotion: response.included[0], humer_type: response.included[1]}
-      dispatch(setGif(newVar))
+      const newVar = {...response.data}
+      //dispatch(setGif(newVar))
       dispatch(addAGif(newVar))// malcome testing
     })
   }
@@ -43,8 +43,7 @@ export const fetchGifs = (gifData) => {
     .then(response => {
       console.log("response object:", response)
       //debugger
-      const newVar = response.data
-      dispatch(addAGif(newVar))
+      dispatch(setGif(response.data))
     })
   }
 }
