@@ -9,6 +9,7 @@ import NavBar from './components/NavBar.js'
 // import SearchBar from './components/SearchBar.js';
 // import SingleGif from './components/SingleGif.js'
 // import GifList from './components/GifList.js'
+import { fetchGifs } from './actions/gifs'
 import Home from './components/Home.js'
 import Blank from './components/Blank.js'
 import AllGifs from './components/AllGifs.js'
@@ -24,9 +25,9 @@ class App extends React.Component {
   //1
    // state = { gif: [] }
 
-   // componentDidMount() {
-   //    this.props.fetchGifs()
-   //  }
+   componentDidMount() {
+     this.props.fetchGifs()
+   }
 
 //2
   // onSearchSubmit = async (term) => {
@@ -59,8 +60,8 @@ class App extends React.Component {
             <Route exact path='/gifs' component={AllGifs}/>
             <Route exact path='/gifs/new' component={NewGifFormContainer}/>
              <Route exact path='/gifs/:id' render={ props  => {
-               const gif = this.props.gifs.find(gif => gif.id === props.match.params.id)
-               console.log(this.props.gifs)
+               const gif = this.props.gifs &&  this.props.gifs.find(gif => gif.id === props.match.params.id)
+               console.log("Yoooo im here",gif)
                return <GifShowCard gif={gif} {...props}/>
                }
              }/>
@@ -82,7 +83,7 @@ const mapStateToProps = state => {
 }
 
 //export default App;
-export default withRouter(connect(mapStateToProps)(App));
+export default withRouter(connect(mapStateToProps, {fetchGifs})(App));
 
 // let APIKEY = ""
 // let url = `https://api.giphy.com/v1/gifs/search?api_key=${APIKEY}&limit=1&q=`;
