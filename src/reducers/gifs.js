@@ -1,11 +1,11 @@
 export default (state = [], action) => {
   switch (action.type) {
-    case "SET_GIF":
-      return [action.gif] //[{},{}]
+    case "SET_GIFS":
+      return action.gifs //[{},{}]
     // case "SET_GIF":
     //   return [...state, action.gif] //[{},{}] - good anna study
     case "ADD_A_GIF":
-      return state.concat(action.gif)
+      return [...state, action.gif]
     default:
       return state
   }
