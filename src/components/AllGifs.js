@@ -16,7 +16,7 @@ const handleClickOnEdit = (e) => {
 const handleClickOnDelete=(e) =>  {
   e.preventDefault();
   console.log('The Delete button was clicked.');
-  
+
 }
 
 const renderEditAndDeleteButtons = () => {
@@ -32,12 +32,13 @@ const renderEditAndDeleteButtons = () => {
   );
 }
 
+
 const renderNameAndRange = (gif) => {
   return (
     <div>
-    name: { gif.emotion.attributes.name }
+    name: { gif.attributes.emotion_name }
     <br />
-    range: {gif.humer_type.attributes.range}
+    range: {gif.attributes.humer_type_range}
     </div>
 
     /*
@@ -60,19 +61,20 @@ const renderNameAndRange = (gif) => {
 }
 
 
+
 const AllGifs = (props) => {
   const gifs = props.gifs.map((gif) => {
     return(
       <div className="item">
       <br />
-      <img height="200" width="200" alt={gif.attributes.name} src={gif.attributes.name} />
+      <li key={gif.id}><img height="200" width="200" alt={gif.attributes.name} src={gif.attributes.name} /></li>
       <br />
-      name: { gif.emotion.attributes.name  }
-      <br />
-      range: {gif.humer_type.attributes.range}
-      {renderNameAndRange(gif)}
+  {/*    //  name: { gif.attributes.emotion_name}
+      // <br />
+      // range: {gif.attributes.humer_type_range} */}
+       {renderNameAndRange(gif)}
       {renderEditAndDeleteButtons()}
-      <HumerTypeDisplay humer_rating={gif.humer_type.attributes.range}/>
+       <HumerTypeDisplay humer_rating={gif.attributes.humer_type_range}/>
       <br />
       </div>
     );
