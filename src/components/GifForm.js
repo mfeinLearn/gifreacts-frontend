@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { addGif } from "../actions/gifs.js"
+import AllGifs from "./AllGifs"
 
 class GifForm extends React.Component {
   // constructor(props) {
@@ -12,6 +13,10 @@ class GifForm extends React.Component {
     humer_type: '',
     name: this.props.gif.images.downsized.url //  add changes to dispatch the setGif action with a response from the giffy api
   };
+
+  onEditSubmit() {
+    console.log("onEditSubmit was called!");
+  }
 
   onFormSubmit = event => {
     event.preventDefault();
@@ -59,6 +64,9 @@ class GifForm extends React.Component {
         onChange={(e) => this.setState({ humer_type: e.target.value })}
       />
       <input type="submit" value="Submit" />
+      <div>
+        <AllGifs onSubmit={this.onEditSubmit}/>
+      </div>
     </form>
     )
   }
