@@ -1,3 +1,4 @@
+//AllGifs.js
 
 import React from 'react';
 // import { Link } from 'react-router-dom'
@@ -7,11 +8,12 @@ import HumerTypeDisplay from './HumerTypeDisplay.js';
 //.. you are going to see those links all times
 // Link - is a one time thing
 
-const handleClickOnEdit = (e) => {
-  e.preventDefault();
+const handleClickOnEdit = (event, props) => {
+  event.preventDefault();
   console.log('The Edit button was clicked.');
-
+  //iwascalled()
 }
+
 
 const handleClickOnDelete=(e) =>  {
   e.preventDefault();
@@ -60,9 +62,12 @@ const renderNameAndRange = (gif) => {
   );
 }
 
-
+// const iwascalled = (props) => {
+//   props.onSubmit();
+// }
 
 const AllGifs = (props) => {
+
   const gifs = props.gifs.map((gif) => {
     return(
       <div className="item">
@@ -72,6 +77,7 @@ const AllGifs = (props) => {
   {/*    //  name: { gif.attributes.emotion_name}
       // <br />
       // range: {gif.attributes.humer_type_range} */}
+      {/*  // {(props) => iwascalled(props)} */}
        {renderNameAndRange(gif)}
       {renderEditAndDeleteButtons()}
        <HumerTypeDisplay humer_rating={gif.attributes.humer_type_range}/>
