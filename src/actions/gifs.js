@@ -11,6 +11,13 @@ export const addAGif = gif => {
   }
 }
 
+export const editAGifReaction = gif => {
+  return {
+    type: "EDIT_GIF_REACTION",
+    gif
+  }
+}
+
 
 export const addGif = (gifData) => {
   return dispatch => {
@@ -46,4 +53,20 @@ export const fetchGifs = (gifData) => {
       dispatch(setGif(response.data))
     })
   }
+}
+
+export const editGifReaction = (data) => {
+ return (dispatch) => {
+   fetch(`http://localhost:3001/api/v1/gifs/${data.id}`, {
+     headers: {
+       'Content-Type': 'application/json',
+       'Accept': 'application/json'
+     },
+     method: 'PATCH',
+     body: JSON.stringify(data)
+   })
+   .then(response => response.json())
+   .then(gifReaction => dispatch(editAGifReaction(gifReaction)))
+ }
+
 }
