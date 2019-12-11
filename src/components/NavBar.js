@@ -7,8 +7,8 @@ const NavBar = () => {
     <div className="NavBar">
       <NavLink exact activeClass to="/home">Home |  </NavLink>
       <NavLink exact activeClass to="/gifs">All Gifs |  </NavLink>
-      <NavLink exact activeClass to="/gifs/new">New Gif  |  </NavLink>
-      <NavLink exact activeClass to="/blank">Blank </NavLink>
+      <NavLink exact activeClass to="/gifs/new">New Gif  </NavLink>
+      {/*<NavLink exact activeClass to="/blank">Blank </NavLink> */}
     </div>
   )
 }
