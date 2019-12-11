@@ -66,7 +66,7 @@ class App extends React.Component {
                }
              }/>
             <Route exact path='/gifs/:id/edit' component={EditGifFormContainer}/>
-            <Route exact path='/blank' component={Blank}/>
+            {/* // <Route exact path='/blank' component={Blank}/> */}
             </Switch>
           </Router>
 
