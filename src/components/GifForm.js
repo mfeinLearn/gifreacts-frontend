@@ -14,9 +14,9 @@ class GifForm extends React.Component {
     name: this.props.gif.images.downsized.url //  add changes to dispatch the setGif action with a response from the giffy api
   };
 
-  onEditSubmit() {
-    console.log("onEditSubmit was called!");
-  }
+  // onEditSubmit() {
+  //   console.log("onEditSubmit was called!");
+  // }
 
   onFormSubmit = event => {
     event.preventDefault();
@@ -64,9 +64,6 @@ class GifForm extends React.Component {
         onChange={(e) => this.setState({ humer_type: e.target.value })}
       />
       <input type="submit" value="Submit" />
-      <div>
-        <AllGifs onSubmit={this.onEditSubmit}/>
-      </div>
     </form>
     )
   }
