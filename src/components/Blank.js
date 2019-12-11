@@ -5,9 +5,9 @@ import { fetchGifs } from '../actions/gifs'
 /////////////////////////////////////////////////////////
 class Blank extends React.Component {
 
-  componentDidMount() {
-    this.props.fetchGifs()
-  }
+  // componentDidMount() {
+  //   this.props.fetchGifs()
+  // }
 
   render(props) {
       return (
