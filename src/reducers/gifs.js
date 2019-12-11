@@ -6,6 +6,8 @@ export default (state = [], action) => {
     //   return [...state, action.gif] //[{},{}] - good anna study
     case "ADD_A_GIF":
       return [...state, action.gif]
+    case "EDIT_GIF_REACTION":
+      return [...state, action.gif]
     default:
       return state
   }
