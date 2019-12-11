@@ -8,18 +8,20 @@ import { fetchGifs } from '../actions/gifs'
 // Link - is a one time thing
 
 class GifShowCard extends React.Component {
-  componentDidMount() {
-    this.props.fetchGifs()
-  }
+  // componentDidMount() {
+  //   this.props.fetchGifs()
+  // }
 
-  render(props) {
+  render() {
   return (
-    // gif ?
-    // <div>
-    //   <h3>{gif.attributes.name}</h3>
-    // </div> :
-    // <p>This the the GifShowCard with no gif!</p>
-    0
+    <div>
+
+    { this.props.gif ?
+      // img tag && new form 
+      <h3>{this.props.gif.attributes.name}</h3>
+        :
+    <p>This the the GifShowCard with no gif!</p> }
+    </div>
     )
   }
 }
