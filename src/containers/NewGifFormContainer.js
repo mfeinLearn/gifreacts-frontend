@@ -3,7 +3,6 @@ import React from 'react';
 import axios from '../api/axios.js'
 import SearchBar from '../components/SearchBar.js';
 import SingleGif from '../components/SingleGif.js'
-import GifList from '../components/GifList.js'
 // import AllGifs from './AllGifs.js'
 //NavLink - are great for nav bars when
 //.. you are going to see those links all times
@@ -33,8 +32,6 @@ render() {
       <div>
         <SearchBar onSubmit={this.onSearchSubmit}/>
         <SingleGif gif={this.state.gif}/>
-  {/*      <GifList gif={this.state.gif}/>     */}
-        {/*// <GifList />*/}
       </div>
     )
   }
