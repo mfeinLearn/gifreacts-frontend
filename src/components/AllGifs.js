@@ -8,65 +8,67 @@ import HumerTypeDisplay from './HumerTypeDisplay.js';
 //.. you are going to see those links all times
 // Link - is a one time thing
 
-const handleClickOnEdit = (event, props) => {
-  event.preventDefault();
-  console.log('The Edit button was clicked.');
-  //iwascalled()
-}
-
-
-const handleClickOnDelete=(e) =>  {
-  e.preventDefault();
-  console.log('The Delete button was clicked.');
-
-}
-
-const renderEditAndDeleteButtons = () => {
-  return (
-    <div className="right floated content">
-       <button className="ui button primary" onClick={handleClickOnEdit}>
-        Edit
-    </button>
-      <button className="ui button negative" onClick={handleClickOnDelete}>
-        Delete
-      </button>
-    </div>
-  );
-}
-
-
-const renderNameAndRange = (gif) => {
-  return (
-    <div>
-    name: { gif.attributes.emotion_name }
-    <br />
-    range: {gif.attributes.humer_type_range}
-    </div>
-
-    /*
-    <form className="item">
-      <br />
-      <input
-        placeholder="emotion"
-        name="emotion"
-        type="text"
-      />
-      <input
-        placeholder="humer type"
-        name="humer type"
-        type="text"
-      />
-      <input type="submit" value="Submit" />
-    </form>
-    */
-  );
-}
-
 // const iwascalled = (props) => {
 //   props.onSubmit();
 // }
 
 const AllGifs = (props) => {
+
+  const handleClickOnEdit = (event, gif) => {
+    event.preventDefault();
+    // pass in gif id into push instead of 62
+    //props.history.push('/gifs/62')
+    props.history.push(`/gifs/${gif.id}`)
+    console.log(`The Edit button was clicked. - /gifs/${gif.id}`);
+  }
+
+
+  const handleClickOnDelete=(e) =>  {
+    e.preventDefault();
+    console.log('The Delete button was clicked.');
+
+  }
+
+  const renderEditAndDeleteButtons = (gif) => {
+    return (
+      <div className="right floated content">
+         <button className="ui button primary" onClick={(event)=>handleClickOnEdit(event, gif)}>
+          Edit
+      </button>
+        <button className="ui button negative" onClick={handleClickOnDelete}>
+          Delete
+        </button>
+      </div>
+    );
+  }
+
+
+  const renderNameAndRange = (gif) => {
+    return (
+      <div>
+      name: { gif.attributes.emotion_name }
+      <br />
+      range: {gif.attributes.humer_type_range}
+      </div>
+
+      /*
+      <form className="item">
+        <br />
+        <input
+          placeholder="emotion"
+          name="emotion"
+          type="text"
+        />
+        <input
+          placeholder="humer type"
+          name="humer type"
+          type="text"
+        />
+        <input type="submit" value="Submit" />
+      </form>
+      */
+    );
+  }
 
   const gifs = props.gifs.map((gif) => {
     return(
@@ -79,7 +81,7 @@ const AllGifs = (props) => {
       // range: {gif.attributes.humer_type_range} */}
       {/*  // {(props) => iwascalled(props)} */}
        {renderNameAndRange(gif)}
-      {renderEditAndDeleteButtons()}
+      {renderEditAndDeleteButtons(gif)}
        <HumerTypeDisplay humer_rating={gif.attributes.humer_type_range}/>
       <br />
       </div>
