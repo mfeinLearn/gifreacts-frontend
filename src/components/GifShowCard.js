@@ -19,7 +19,7 @@ class GifShowCard extends React.Component {
   }
 
   handleEditClick = (event) => {
-    event.preventDefault()
+      event.preventDefault()
       const gif = this.props.gif;
       console.log("this.props.gif in GifShowCard's handleEditClick",gif)
      let singleGifReaction = {gif, id: gif.id} // did not do yet
