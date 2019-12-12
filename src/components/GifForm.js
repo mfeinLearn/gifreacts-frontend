@@ -49,6 +49,9 @@ class GifForm extends React.Component {
       <br />
       <label><strong>Create a Gif React-ion:</strong></label>
       <br />
+      <b>
+      <label>emotion</label>
+      </b>
       <input
         placeholder="emotion"
         name="emotion"
@@ -56,8 +59,12 @@ class GifForm extends React.Component {
         value={this.state.emotion}
         onChange={(e) => this.setState({ emotion: e.target.value })}
       />
+
+      <b>
+        <label>humer type</label>
+      </b>
       <input
-        placeholder="humer type"
+        placeholder="(1 - 5)"
         name="humer type"
         type="text"
         value={this.state.humer_type}
