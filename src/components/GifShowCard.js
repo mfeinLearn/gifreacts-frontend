@@ -13,9 +13,13 @@ class GifShowCard extends React.Component {
   // }
 
   handleChange = (event) => {
-    this.setState({
-      [event.target.name]: event.target.value
-    })
+    const {name, value} = event.target
+// [event.target.name]: event.target.value
+console.log(name)
+console.log(value)
+    // this.setState({
+    //   [event.target.name]: event.target.value
+    // })
   }
 
   handleEditClick = (event) => {
