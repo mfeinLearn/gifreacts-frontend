@@ -70,3 +70,33 @@ export const editGifReaction = (data) => {
  }
 
 }
+
+// export const updateGif = (tripData, history) => {
+//   // sending the fetch request
+//   return dispatch => {
+//     const sendableTripData = {
+//       start_date: tripData.startDate,
+//       end_date: tripData.endDate,
+//       name: tripData.name
+//     }
+//     return fetch(`http://localhost:3001/api/v1/trips/${tripData.tripId}`, {
+//       credentials: "include",
+//       method: "PATCH",
+//       headers: {
+//         "Content-Type": "application/json"
+//       },
+//       body: JSON.stringify(sendableTripData)
+//     })
+//       .then(r => r.json())
+//       .then(resp => {
+//         if (resp.error) {
+//           alert(resp.error)
+//         } else {
+//           dispatch(updateTripSuccess(resp.data))// this will update the store
+//           // dispatch(resetTripForm())
+//           history.push(`/trips/${resp.data.id}`)
+//         }
+//       })
+//       .catch(console.log)
+//   }
+// }
