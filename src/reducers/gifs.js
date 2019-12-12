@@ -7,7 +7,17 @@ export default (state = [], action) => {
     case "ADD_A_GIF":
       return [...state, action.gif]
     case "EDIT_GIF_REACTION":
-      return [...state, action.gif]
+
+    let theGifReaction = [state][0].map(theGif => {
+      if (theGif.id === action.gif) {
+        return action.gif
+      } else {
+        return theGif
+      }
+    })
+        debugger;
+      // return [...state, theGifReaction]
+      return [ theGifReaction]
     default:
       return state
   }
