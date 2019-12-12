@@ -13,6 +13,7 @@ class GifShowCard extends React.Component {
   // }
 
   handleChange = (event) => {
+    this.props.editGifReaction()
     const {name, value} = event.target
 // [event.target.name]: event.target.value
 console.log(name)
