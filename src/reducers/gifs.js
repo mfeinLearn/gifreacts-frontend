@@ -15,6 +15,9 @@ export default (state = [], action) => {
         return theGif
       }
     })
+    case "UPDATE_GIF_REACTION":
+      //console.log("action.whoAmI :",action.whoAmI)
+      return state
       // return [...state, theGifReaction]
       //return [ theGifReaction]
     default:
