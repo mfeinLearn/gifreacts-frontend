@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom';
 import { editGifReaction } from '../actions/gifs'
+import { updateGif } from '../actions/gifs'
 
 //NavLink - are great for nav bars when
 //.. you are going to see those links all times
@@ -12,30 +13,32 @@ class GifShowCard extends React.Component {
   //   this.props.fetchGifs()
   // }
 
-  handleChange = (event) => {
+  handleInputChange = (event) => {
     const {name, value} = event.target
-    // this.props.editGifReaction(name, value)
-// [event.target.name]: event.target.value
-// console.log(name)
-// console.log(value)
-    // this.setState({
-    //   [event.target.name]: event.target.value
-    // })
+    const updatedFormInfo = {
+      ...this.props.gifs[0].attributes,
+      [name]:value
+    }
+    this.props.updateGif(updatedFormInfo)
   }
 
   handleEditClick = (event) => {
       event.preventDefault()
+      // const result = this.props.gifs.filter(gifFromStore => gifFromStore.id === this.props.gif.id);
+      // console.log("result :",result)
       const gif = this.props.gif;
       console.log("this.props.gif in GifShowCard's handleEditClick",gif)
-     let singleGifReaction = {gif, id: gif.id} // did not do yet
-     this.props.editGifReaction(singleGifReaction)// did not create yet
+     let singleGifReaction = {gif, id: gif.id}
+     this.props.editGifReaction(singleGifReaction)
   }
 
   render() {
     //console.log("this.props.gif in GifShowCard",this.props.gif)
+  console.log("this.props.gifs:",this.props.gifs)
+  const result = this.props.gifs//.filter(gifFromStore => gifFromStore.id === this.props.gif.id);
   return (
     <div>
-    { this.props.gif ?
+    { this.props.gif && result ?
   <form onSubmit={this.handleEditClick}>
   // img tag && new form
     <img
@@ -44,10 +47,10 @@ class GifShowCard extends React.Component {
       src={this.props.gif.attributes.name}
     />
     <br />
-      <label>emotion name: </label>
-      <input type='text' placeholder='emotion name' value={this.props.gif.attributes.emotion_name} name="emotion_name" onChange={this.handleChange}/><br/>
+      <label>emotion name: </label>                  
+      <input type='text' placeholder='emotion name' value={this.props.gif.attributes.emotion_name} name="emotion_name" onChange={this.handleInputChange}/><br/>
       <label>humer type range: </label>
-      <input type='text' placeholder='humer type range' value={this.props.gif.attributes.humer_type_range} name="humer_type_range" onChange={this.handleChange}/><br/>
+      <input type='text' placeholder='humer type range' value={this.props.gif.attributes.humer_type_range} name="humer_type_range" onChange={this.handleInputChange}/><br/>
       <input type="submit"/>
   </form>
 
@@ -64,4 +67,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default withRouter(connect(mapStateToProps, {editGifReaction})(GifShowCard));
+export default withRouter(connect(mapStateToProps, {editGifReaction, updateGif})(GifShowCard));
