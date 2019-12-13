@@ -18,6 +18,16 @@ export const editAGifReaction = gif => {
   }
 }
 
+export const updateGif = (whoAmI) => {
+  console.log("UPDATE_GIF_REACTION :",whoAmI)
+  return {
+    type: "UPDATE_GIF_REACTION",
+    whoAmI
+  }
+}
+
+
+
 
 export const addGif = (gifData) => {
   return dispatch => {
