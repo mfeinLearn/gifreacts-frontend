@@ -54,11 +54,11 @@ class App extends React.Component {
       */}
       {console.log("this.props.gifs:",this.props.gifs)}
           <Router>
-            <NavBar/>
+            <NavBar location={this.props.location}/>
             <Switch>
             <Route exact path='/home' component={Home}/>
             <Route exact path='/gifs' component={AllGifs}/>
-            <Route exact path='/gifs/new' component={NewGifFormContainer}/>
+            <Route exact path='/gifs/new' component={NewGifFormContainer} history={this.props.history}/>
              <Route exact path='/gifs/:id' render={ props  => {
                const gif = this.props.gifs &&  this.props.gifs.find(gif => gif.id === props.match.params.id)
                console.log("Yoooo im here",gif)
