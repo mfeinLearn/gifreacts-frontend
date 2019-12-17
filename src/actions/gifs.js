@@ -29,9 +29,10 @@ export const updateGif = (whoAmI) => {
 
 
 
-export const addGif = (gifData) => {
+export const addGif = (gifData, history) => {
+  console.log("c")
   return dispatch => {
-    console.log(gifData)// this has to be an object
+    // console.log(gifData)// this has to be an object
     // this is the request that we are making to our back
     return fetch("http://localhost:3001/api/v1/gifs", {
       method: "POST",
@@ -41,14 +42,18 @@ export const addGif = (gifData) => {
       body: JSON.stringify(gifData)//make the data into a string
       })
     .then(r => r.json())
+    // .then(r => console.log("r",r))
     .then(response => {
-      console.log("response object:", response)
+      console.log("d")
+      // console.log("response object:", response)
       //debugger
       const newVar = {...response.data}
       //dispatch(setGif(newVar))
       dispatch(addAGif(newVar))// malcome testing
+      history.push('/gifs')
     })
   }
+  console.log("e")
 }
 
 export const fetchGifs = (gifData) => {
