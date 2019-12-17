@@ -11,34 +11,56 @@
   right: 5px; */
 }
 
+.flex-container {
+  display: flex;
+}
+
+.flex-container > div {
+  display: flex;
+
+}
+
 .humer-type-display {
   /* display: flex;
   justify-content: flex-start; */
   /* align-items: center; */
+  /* text-align: center; */
 }
 
 .humer-type-display.ok i {
   color: blue;
+  /* flex-grow: 7 */
+  position: relative;
 }
 
 .humer-type-display.funny i {
   color: green;
+  /* flex-grow: 7 */
+  position: relative;
 }
 
 .humer-type-display.rotfl i {
   color: gold;
+  /* flex-grow: 7 */
+  position: relative;
 }
 
 
 
 .ok {
   background-color: aliceblue;
+  text-align: center;
+border-style: solid;
 }
 
 .funny {
   background-color: orange;
+  text-align: center;
+border-style: solid;
 }
 
 .rotfl {
   background-color: green;
+  text-align: center;
+border-style: solid;
 }
