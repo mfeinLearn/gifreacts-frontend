@@ -40,14 +40,14 @@ class GifShowCard extends React.Component {
     <div>
     { this.props.gif && result ?
   <form onSubmit={this.handleEditClick}>
-  // img tag && new form
+  {/* img tag && new form */}
     <img
       height="200" width="200"
       alt={this.props.gif.attributes.name}
       src={this.props.gif.attributes.name}
     />
     <br />
-      <label>emotion name: </label>                  
+      <label>emotion name: </label>
       <input type='text' placeholder='emotion name' value={this.props.gif.attributes.emotion_name} name="emotion_name" onChange={this.handleInputChange}/><br/>
       <label>humer type range: </label>
       <input type='text' placeholder='humer type range' value={this.props.gif.attributes.humer_type_range} name="humer_type_range" onChange={this.handleInputChange}/><br/>
