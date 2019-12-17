@@ -29,6 +29,16 @@ const AllGifs = (props) => {
 
   }
 
+  const ColoredLine = ({ color }) => (
+      <hr
+          style={{
+              color: color,
+              backgroundColor: color,
+              height: 5
+          }}
+      />
+  );
+
   const renderEditAndDeleteButtons = (gif) => {
     return (
       <div className="right floated content">
@@ -71,20 +81,24 @@ const AllGifs = (props) => {
   }
 
   const gifs = props.gifs.map((gif) => {
+    let returnVal
+    if (gif) {
+      returnVal = <div className="item">
+    <br />
+    <ColoredLine color="red" />
+    <li key={gif.id}><img height="200" width="200" key={gif.id} alt={gif.attributes.name} src={gif.attributes.name}/></li>
+    <br />
+    {renderEditAndDeleteButtons(gif)}
+     <HumerTypeDisplay humer_rating={gif.attributes.humer_type_range} key={Math.random()}/>
+    <br />
+    </div>
+      } else {
+    returnVal = <div>
+                  LOADING...
+                </div>
+    }
     return(
-      <div className="item">
-      <br />
-      <li key={gif.id}><img height="200" width="200" alt={gif.attributes.name} src={gif.attributes.name} /></li>
-      <br />
-  {/*    //  name: { gif.attributes.emotion_name}
-      // <br />
-      // range: {gif.attributes.humer_type_range} */}
-      {/*  // {(props) => iwascalled(props)} */}
-       {renderNameAndRange(gif)}
-      {renderEditAndDeleteButtons(gif)}
-       <HumerTypeDisplay humer_rating={gif.attributes.humer_type_range}/>
-      <br />
-      </div>
+    returnVal
     );
   });
 
