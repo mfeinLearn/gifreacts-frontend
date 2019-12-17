@@ -31,7 +31,7 @@ render() {
     return (
       <div>
         <SearchBar onSubmit={this.onSearchSubmit}/>
-        <SingleGif gif={this.state.gif}/>
+        <SingleGif gif={this.state.gif} history={this.props.history}/>
       </div>
     )
   }
