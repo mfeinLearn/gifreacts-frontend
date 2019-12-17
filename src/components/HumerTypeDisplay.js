@@ -33,10 +33,13 @@ const HumerTypeDisplay = (props) => {
   const { text, iconName } = humerConfig[humer];
 
   return (
-  <div className={`humer-type-display ${humer}`}>
-    <i className={`icon-left large ${iconName} icon`} />
-    <h1>{text}</h1>
-    <i className={`icon-right large ${iconName} icon`} />
+  <div className={`humer-type-container`}>
+    <div className={`humer-type-display ${humer}`}>
+      <i className={`icon-left large ${iconName} icon`} />
+      <h2>{text}</h2>
+      {/*// <i className={`icon-right large ${iconName} icon`} />*/}
+    </div>
+
   </div>
   );
 };
