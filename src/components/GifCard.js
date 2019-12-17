@@ -46,7 +46,7 @@ class GifCard extends React.Component {
           alt={title}
           src={images.downsized.url}
         />
-        <GifForm gif={this.props.gif}/>
+        <GifForm gif={this.props.gif} history={this.props.history}/>
       </div>
     );
   }
