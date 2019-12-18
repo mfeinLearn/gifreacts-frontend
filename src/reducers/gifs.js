@@ -15,10 +15,11 @@ export default (state = [], action) => {
         return theGif
       }
     })
-    case "UPDATE_GIF_REACTION":
-      //console.log("action.whoAmI :",action.whoAmI)
-      return state
-      // return [...state, theGifReaction]
+    // case "UPDATE_GIF_REACTION":
+    //   console.log("action.whoAmI in reducer:",action.whoAmI)
+    //   console.log("in reducer:",[...state, action.whoAmI])
+    //   //return state
+    //   return [...state, action.whoAmI]
       //return [ theGifReaction]
     default:
       return state
