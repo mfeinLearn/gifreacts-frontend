@@ -11,20 +11,20 @@ export const addAGif = gif => {
   }
 }
 
-export const editAGifReaction = gif => {
+export const editAGif = gif => {
   return {
     type: "EDIT_GIF_REACTION",
     gif
   }
 }
 
-export const updateGif = (whoAmI) => {
-  console.log("UPDATE_GIF_REACTION :",whoAmI)
-  return {
-    type: "UPDATE_GIF_REACTION",
-    whoAmI
-  }
-}
+// export const updateGif = (whoAmI) => {
+//   console.log("UPDATE_GIF_REACTION HAHAHAHA :",whoAmI)
+//   return {
+//     type: "UPDATE_GIF_REACTION",
+//     whoAmI
+//   }
+// }
 
 
 
@@ -70,9 +70,11 @@ export const fetchGifs = (gifData) => {
   }
 }
 
-export const editGifReaction = (data) => {
+export const editGifReaction = (data, id) => {
+  //console.log("broOoooooOOooOoOOOOOoooOOOoo",data)
+  // might needs to change
  return (dispatch) => {
-   fetch(`http://localhost:3001/api/v1/gifs/${data.id}`, {
+   fetch(`http://localhost:3001/api/v1/gifs/${id}`, {
      headers: {
        'Content-Type': 'application/json',
        'Accept': 'application/json'
@@ -81,7 +83,7 @@ export const editGifReaction = (data) => {
      body: JSON.stringify(data)
    })
    .then(response => response.json())
-   .then(gifReaction => dispatch(editAGifReaction(gifReaction)))
+   .then(gifReaction => dispatch(editAGif(gifReaction)))
  }
 
 }
