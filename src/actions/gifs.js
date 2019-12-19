@@ -12,6 +12,7 @@ export const addAGif = gif => {
 }
 
 export const editAGif = gif => {
+  console.log("@@-1broOooo-gif",gif)
   return {
     type: "EDIT_GIF_REACTION",
     gif
@@ -71,7 +72,7 @@ export const fetchGifs = (gifData) => {
 }
 
 export const editGifReaction = (data, id) => {
-  //console.log("broOoooooOOooOoOOOOOoooOOOoo",data)
+  console.log("@@-1broOoooooOOooOoOOOOOoooOOOoo",data)
   // might needs to change
  return (dispatch) => {
    fetch(`http://localhost:3001/api/v1/gifs/${id}`, {
