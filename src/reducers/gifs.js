@@ -16,6 +16,16 @@ export default (state = [], action) => {
         return theGif
       }
     })
+    case "DELETE_GIF_REACTION":
+    //let theGifReaction = [state][0].map(theGif => {
+    return state.map(theGif => {
+      //console.log("action.gif",action.gif)
+      if (theGif.id === action.gif.id) {
+        return action.gif
+      } else {
+        return theGif
+      }
+    })
     // case "UPDATE_GIF_REACTION":
     //   console.log("action.whoAmI in reducer:",action.whoAmI)
     //   console.log("in reducer:",[...state, action.whoAmI])
