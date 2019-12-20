@@ -19,6 +19,13 @@ export const editAGif = gif => {
   }
 }
 
+export const deleteTheGif = gif => {
+  return {
+    type: "DELETE_GIF_REACTION",
+    gif
+  }
+}
+
 // export const updateGif = (whoAmI) => {
 //   console.log("UPDATE_GIF_REACTION HAHAHAHA :",whoAmI)
 //   return {
@@ -76,7 +83,7 @@ export const editGifReaction = (data, id) => {
   // console.log("@@-id-in-action",id)
   // might needs to change
  return (dispatch) => {
-   fetch(`http://localhost:3001/api/v1/gifs/${id}`, {
+  return fetch(`http://localhost:3001/api/v1/gifs/${id}`, {
      headers: {
        'Content-Type': 'application/json',
        'Accept': 'application/json'
@@ -89,6 +96,16 @@ export const editGifReaction = (data, id) => {
    .catch(error => console.log("@@ - catch in editGifReaction - error->: ", error))
  }
 
+}
+
+export const deleteGif = (data, id) => {
+ return (dispatch) => {
+   return fetch(`http://localhost:3001/api/v1/gifs/${id}`, {
+     method: 'DELETE'
+   })
+   .then(response => response.json())
+   .then(gifReaction => dispatch(deleteTheGif(gifReaction)))
+ }
 }
 
 // export const updateGif = (tripData, history) => {
