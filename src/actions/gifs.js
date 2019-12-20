@@ -31,7 +31,7 @@ export const editAGif = gif => {
 
 
 export const addGif = (gifData, history) => {
-  console.log("c")
+  // console.log("c")
   return dispatch => {
     // console.log(gifData)// this has to be an object
     // this is the request that we are making to our back
@@ -45,7 +45,7 @@ export const addGif = (gifData, history) => {
     .then(r => r.json())
     // .then(r => console.log("r",r))
     .then(response => {
-      console.log("d")
+      // console.log("d")
       // console.log("response object:", response)
       //debugger
       const newVar = {...response.data}
@@ -54,17 +54,17 @@ export const addGif = (gifData, history) => {
       history.push('/gifs')
     })
   }
-  console.log("e")
+  // console.log("e")
 }
 
 export const fetchGifs = (gifData) => {
   return dispatch => {
-    console.log(gifData)// this has to be an object
+    //console.log(gifData)// this has to be an object
     // this is the request that we are making to our back
     return fetch("http://localhost:3001/api/v1/gifs")
     .then(r => r.json())
     .then(response => {
-      console.log("response object:", response)
+      // console.log("response object:", response)
       //debugger
       dispatch(setGif(response.data))
     })
@@ -72,7 +72,8 @@ export const fetchGifs = (gifData) => {
 }
 
 export const editGifReaction = (data, id) => {
-  console.log("@@-1broOoooooOOooOoOOOOOoooOOOoo",data)
+   console.log("@@-data-in-action",data)
+  // console.log("@@-id-in-action",id)
   // might needs to change
  return (dispatch) => {
    fetch(`http://localhost:3001/api/v1/gifs/${id}`, {
@@ -85,6 +86,7 @@ export const editGifReaction = (data, id) => {
    })
    .then(response => response.json())
    .then(gifReaction => dispatch(editAGif(gifReaction)))
+   .catch(error => console.log("@@ - catch in editGifReaction - error->: ", error))
  }
 
 }
