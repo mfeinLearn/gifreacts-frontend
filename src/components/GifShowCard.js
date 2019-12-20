@@ -37,15 +37,17 @@ class GifShowCard extends React.Component {
       // const result = this.props.gifs.filter(gifFromStore => gifFromStore.id === this.props.gif.id);
       // console.log("result :",result)
       const id = parseInt(this.props.gif.id);
-      console.log("@@ an id of old gif:",id)
+      // console.log("@@ an id of old gif:",id)
       const gifHumerTypeRange = this.state.humer_type_range;
+      // console.log("@@ gifHumerTypeRange",gifHumerTypeRange)
       const gifEmotionName = this.state.emotion_name;
+      // console.log("@@ gifEmotionName",gifEmotionName)
       const gif = {
                   id: this.props.gif.id,
                   emotion_name: gifEmotionName,
                   humer_type_range: gifHumerTypeRange
                   }
-      console.log("@@ an id input of new gif:",gif)
+      // console.log("@@ an id input of new gif:",gif)
       //console.log("this.props.gif in GifShowCard's handleEditClick", gif)
      //let singleGifReaction = {gif, id}
      this.props.editGifReaction(gif, id)
@@ -53,7 +55,7 @@ class GifShowCard extends React.Component {
 
   render() {
     //console.log("this.props.gif in GifShowCard",this.props.gif)
-  console.log("this.props.gifs:",this.props.gifs)
+  // console.log("this.props.gifs:",this.props.gifs)
   const result = this.props.gifs//.filter(gifFromStore => gifFromStore.id === this.props.gif.id);
   return (
     <div>
@@ -74,7 +76,7 @@ class GifShowCard extends React.Component {
   </form>
 
         :
-    <p>This the the GifShowCard with no gif!</p> }
+    <p>Loading...!</p> }
     </div>
     )
   }
