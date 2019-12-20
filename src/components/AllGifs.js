@@ -3,6 +3,7 @@
 import React from 'react';
 // import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { deleteGif } from '../actions/gifs.js'
 import HumerTypeDisplay from './HumerTypeDisplay.js';
 //NavLink - are great for nav bars when
 //.. you are going to see those links all times
@@ -23,10 +24,10 @@ const AllGifs = (props) => {
   }
 
 
-  const handleClickOnDelete=(e) =>  {
-    e.preventDefault();
-    console.log('The Delete button was clicked.');
-
+  const handleClickOnDelete = (event, gif) =>  {
+    event.preventDefault();
+    //console.log('The Delete button was clicked.');
+    props.deleteGif(gif, gif.id)
   }
 
   const ColoredLine = ({ color }) => (
@@ -45,7 +46,7 @@ const AllGifs = (props) => {
          <button className="ui button primary" key={Math.random()} onClick={(event)=>handleClickOnEdit(event, gif)}>
           Edit
       </button>
-        <button className="ui button negative" key={Math.random()} onClick={handleClickOnDelete}>
+        <button className="ui button negative" key={Math.random()} onClick={(event) => handleClickOnDelete(event, gif)}>
           Delete
         </button>
       </div>
@@ -110,4 +111,4 @@ const mapStateToProps = (state) => {
   return {gifs: state.gifs}
 }
 
-export default connect(mapStateToProps)(AllGifs);
+export default connect(mapStateToProps, { deleteGif })(AllGifs);
