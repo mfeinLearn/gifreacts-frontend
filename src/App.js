@@ -52,7 +52,7 @@ class App extends React.Component {
       // <GifList gif={this.state.gif}/>
       // <GifList />
       */}
-      {console.log("this.props.gifs:",this.props.gifs)}
+      {/*console.log("this.props.gifs:",this.props.gifs)*/}
           <Router>
             <NavBar location={this.props.location}/>
             <Switch>
@@ -61,7 +61,7 @@ class App extends React.Component {
             <Route exact path='/gifs/new' component={NewGifFormContainer} history={this.props.history}/>
              <Route exact path='/gifs/:id' render={ props  => {
                const gif = this.props.gifs &&  this.props.gifs.find(gif => gif.id === props.match.params.id)
-               console.log("Yoooo im here",gif)
+               // console.log("Yoooo im here",gif)
                return <GifShowCard gif={gif} {...props}/>
                }
              }/>
