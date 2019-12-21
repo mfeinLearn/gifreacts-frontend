@@ -1,4 +1,5 @@
 export const setGif = gifs => {
+  console.log(gifs)
   return {
     type: "SET_GIFS",
     gifs
@@ -12,7 +13,7 @@ export const addAGif = gif => {
 }
 
 export const editAGif = gif => {
-  console.log("@@-1broOooo-gif",gif)
+  console.log("@@@-1broOooo-gif",gif)
   return {
     type: "EDIT_GIF_REACTION",
     gif
