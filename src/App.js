@@ -65,7 +65,12 @@ class App extends React.Component {
                return <GifShowCard gif={gif} {...props}/>
                }
              }/>
-            {/*// <Route exact path='/gifs/:id/edit' component={EditGifFormContainer}/>*/}
+              <Route exact path='/gifs/:id/edit' render={ props  => {
+                const gif = this.props.gifs &&  this.props.gifs.find(gif => gif.id === props.match.params.id)
+                // console.log("Yoooo im here",gif)
+                return <EditGifFormContainer gif={gif} {...props}/>
+                }
+              }/>
             {/* // <Route exact path='/blank' component={Blank}/> */}
             </Switch>
           </Router>
