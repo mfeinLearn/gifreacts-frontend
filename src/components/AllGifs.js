@@ -43,12 +43,12 @@ const AllGifs = (props) => {
   const renderEditAndDeleteButtons = (gif) => {
     return (
       <div className="right floated content">
-         <button className="ui button primary" key={Math.random()} onClick={(event)=>handleClickOnEdit(event, gif)}>
-          Edit
+         <button className="ui violet button" key={Math.random()} onClick={(event)=>handleClickOnEdit(event, gif)}>
+          Details
       </button>
-        <button className="ui button negative" key={Math.random()} onClick={(event) => handleClickOnDelete(event, gif)}>
-          Delete
-        </button>
+      {/*  // <button className="ui button negative" key={Math.random()} onClick={(event) => handleClickOnDelete(event, gif)}>
+        //   Delete
+        // </button>*/}
       </div>
     );
   }
