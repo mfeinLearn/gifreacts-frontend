@@ -20,17 +20,37 @@ class GifShowCard extends React.Component {
     }
   }
 
+  // handleInputChange = (event) => {
+  //   const {name, value} = event.target
+  //   console.log("name :", name)
+  //   const updatedFormInfo = {
+  //     ...this.props.gifs[0].attributes,
+  //     [name]: value
+  //     // emotion_name: (statement) ? value_when_true : value_when_false,
+  //     // humer_type_range: value
+  //
+  //   }
+  //   // setState
+  //   this.setState(updatedFormInfo)
+  // }
 
-
-  handleInputChange = (event) => {
-    const {name, value} = event.target
+  handleEmotionNameInputChange = event => {
+  const { name, value } = event.target
     const updatedFormInfo = {
       ...this.props.gifs[0].attributes,
-      [name]:value
-    }
-    // setState
-    this.setState(updatedFormInfo)
+    [name]: value
   }
+    this.setState(updatedFormInfo)
+}
+
+handleHumerTypeRangeInputChange = event => {
+  const { name, value } = event.target
+    const updatedFormInfo = {
+      ...this.props.gifs[0].attributes,
+    [name]: value
+  }
+    this.setState(updatedFormInfo)
+}
 
   handleEditClick = (event) => {
       event.preventDefault()
@@ -41,13 +61,13 @@ class GifShowCard extends React.Component {
       const gifHumerTypeRange = this.state.humer_type_range;
       // console.log("@@ gifHumerTypeRange",gifHumerTypeRange)
       const gifEmotionName = this.state.emotion_name;
-      // console.log("@@ gifEmotionName",gifEmotionName)
+       // console.log("@@ gifEmotionName",gifEmotionName)
       const gif = {
                   id: this.props.gif.id,
                   emotion_name: gifEmotionName,
                   humer_type_range: gifHumerTypeRange
                   }
-      // console.log("@@ an id input of new gif:",gif)
+      console.log("@@ an id input of new gif:",gif)
       //console.log("this.props.gif in GifShowCard's handleEditClick", gif)
      //let singleGifReaction = {gif, id}
      this.props.editGifReaction(gif, id)
@@ -69,9 +89,9 @@ class GifShowCard extends React.Component {
     />
     <br />
       <label>emotion name: </label>
-      <input type='text' placeholder='emotion name' defaultValue={this.props.gif.attributes.emotion_name} name="emotion_name" onChange={this.handleInputChange}/><br/>
+      <input type='text' placeholder='emotion name' defaultValue={this.props.gif.attributes.emotion_name} name="emotion_name" onChange={this.handleEmotionNameInputChange}/><br/>
       <label>humer type range: </label>
-      <input type='text' placeholder='humer type range' defaultValue={this.props.gif.attributes.humer_type_range} name="humer_type_range" onChange={this.handleInputChange}/><br/>
+      <input type='text' placeholder='humer type range' defaultValue={this.props.gif.attributes.humer_type_range} name="humer_type_range" onChange={this.handleHumerTypeRangeInputChange}/><br/>
       <input type="submit"/>
   </form>
 
@@ -89,3 +109,47 @@ const mapStateToProps = state => {
 }
 
 export default withRouter(connect(mapStateToProps, {editGifReaction})(GifShowCard));
+///
+// handleInputChange = (event) => {
+//   const {name, value} = event.target
+//   console.log("name :", name)
+//   const updatedFormInfo = {
+//     ...this.props.gifs[0].attributes,
+//     [name]: value
+//     // emotion_name: (statement) ? value_when_true : value_when_false,
+//     // humer_type_range: value
+//
+//   }
+//   // setState
+//   this.setState(updatedFormInfo)
+// }
+
+// handleInputChange = (event) => {
+//   const {name, value} = event.target
+//   console.log("name :", name)
+//   const updatedFormInfo = {
+//     ...this.props.gifs[0].attributes,
+//     [name]: value
+//
+//   }
+//   // setState
+//   this.setState(updatedFormInfo)
+// }
+
+// handleInputChange = (event) => {
+//   const {name, value} = event.target
+//   if (name === "emotion_name" && name != "humer_type_range" ) {
+//     const updatedFormInfo = {
+//       ...this.props.gifs[0].attributes,
+//       [name]:value
+//     }
+//     this.setState(updatedFormInfo)
+//   } else if (name === "humer_type_range" && name != "emotion_name" ) {
+//     const updatedFormInfo = {
+//       ...this.props.gifs[0].attributes,
+//       [name]:value
+//     }
+//     this.setState(updatedFormInfo)
+//   }
+//   // setState
+// }
