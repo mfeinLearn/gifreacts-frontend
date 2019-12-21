@@ -9,9 +9,12 @@ export default (state = [], action) => {
     case "EDIT_GIF_REACTION":
     //let theGifReaction = [state][0].map(theGif => {
     return state.map(theGif => {
-      //console.log("action.gif",action.gif)
-      if (theGif.id === action.gif.id) {
-        return action.gif
+      console.log("theGif.id ->",theGif.id )
+      console.log("action.gif.data.id ->",action.gif.data.id)
+      console.log("@@action.gif.data ------>",action.gif.data)
+      console.log("theGif.id === action.gif.data.id ->",theGif.id === action.gif.data.id)
+      if (theGif.id === action.gif.data.id) {
+        return action.gif.data
       } else {
         return theGif
       }
