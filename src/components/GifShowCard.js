@@ -2,85 +2,52 @@ import React from 'react';
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom';
 import { editGifReaction } from '../actions/gifs'
-// import { updateGif } from '../actions/gifs'
+ import { deleteGif } from '../actions/gifs'
 
 //NavLink - are great for nav bars when
 //.. you are going to see those links all times
 // Link - is a one time thing
 
 class GifShowCard extends React.Component {
-  // componentDidMount() {
-  //   this.props.fetchGifs()
-  // }
-  constructor() {
-    super();
-    this.state = {
-      humer_type_range: '',
-      emotion_name: ''
-    }
-  }
 
-  // handleInputChange = (event) => {
-  //   const {name, value} = event.target
-  //   console.log("name :", name)
-  //   const updatedFormInfo = {
-  //     ...this.props.gifs[0].attributes,
-  //     [name]: value
-  //     // emotion_name: (statement) ? value_when_true : value_when_false,
-  //     // humer_type_range: value
-  //
-  //   }
-  //   // setState
-  //   this.setState(updatedFormInfo)
-  // }
 
-  handleEmotionNameInputChange = event => {
-  const { name, value } = event.target
-    const updatedFormInfo = {
-      ...this.props.gifs[0].attributes,
-    [name]: value
-  }
-    this.setState(updatedFormInfo)
-}
 
-handleHumerTypeRangeInputChange = event => {
-  const { name, value } = event.target
-    const updatedFormInfo = {
-      ...this.props.gifs[0].attributes,
-    [name]: value
-  }
-    this.setState(updatedFormInfo)
-}
 
-  handleEditClick = (event) => {
-      event.preventDefault()
-      // const result = this.props.gifs.filter(gifFromStore => gifFromStore.id === this.props.gif.id);
-      // console.log("result :",result)
-      const id = parseInt(this.props.gif.id);
-      // console.log("@@ an id of old gif:",id)
-      const gifHumerTypeRange = this.state.humer_type_range;
-      // console.log("@@ gifHumerTypeRange",gifHumerTypeRange)
-      const gifEmotionName = this.state.emotion_name;
-       // console.log("@@ gifEmotionName",gifEmotionName)
-      const gif = {
-                  id: this.props.gif.id,
-                  emotion_name: gifEmotionName,
-                  humer_type_range: gifHumerTypeRange
-                  }
-      console.log("@@ an id input of new gif:",gif)
-      //console.log("this.props.gif in GifShowCard's handleEditClick", gif)
-     //let singleGifReaction = {gif, id}
-     this.props.editGifReaction(gif, id)
-  }
 
   render() {
+    const renderEditButton = (gif) => {
+      return (
+        <div className="right floated content">
+           <button className="ui button primary" key={Math.random()} onClick={(event)=>handleClickOnEdit(event, gif)}>
+            Edit
+          </button>
+          <button className="ui button negative" key={Math.random()} onClick={(event) => handleClickOnDelete(event, gif)}>
+            Delete
+          </button>
+        </div>
+      );
+    }
+
+    const handleClickOnEdit = (event, gif) => {
+      event.preventDefault();
+      // pass in gif id into push instead of 62
+      //props.history.push('/gifs/62')
+      this.props.history.push(`/gifs/${gif.id}/edit`)
+      console.log(`The Edit button was clicked. - /gifs/${gif.id}/edit`);
+    }
+
+    const handleClickOnDelete = (event, gif) =>  {
+      event.preventDefault();
+      console.log('The Delete button was clicked.');
+      this.props.deleteGif(gif, gif.id)
+    }
     //console.log("this.props.gif in GifShowCard",this.props.gif)
   // console.log("this.props.gifs:",this.props.gifs)
   const result = this.props.gifs//.filter(gifFromStore => gifFromStore.id === this.props.gif.id);
   return (
     <div>
     { this.props.gif && result ?
-  <form onSubmit={this.handleEditClick}>
+  <form>
   {/* img tag && new form */}
     <img
       height="200" width="200"
@@ -88,11 +55,10 @@ handleHumerTypeRangeInputChange = event => {
       src={this.props.gif.attributes.name}
     />
     <br />
-      <label>emotion name: </label>
-      <input type='text' placeholder='emotion name' defaultValue={this.props.gif.attributes.emotion_name} name="emotion_name" onChange={this.handleEmotionNameInputChange}/><br/>
-      <label>humer type range: </label>
-      <input type='text' placeholder='humer type range' defaultValue={this.props.gif.attributes.humer_type_range} name="humer_type_range" onChange={this.handleHumerTypeRangeInputChange}/><br/>
-      <input type="submit"/>
+      <label>Emotion: </label><strong>{this.props.gif.attributes.emotion_name} </strong>
+          <br />
+      <label>humer: </label><strong>{this.props.gif.attributes.humer_type_range}</strong>
+      {renderEditButton(this.props.gif)}
   </form>
 
         :
@@ -108,48 +74,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default withRouter(connect(mapStateToProps, {editGifReaction})(GifShowCard));
-///
-// handleInputChange = (event) => {
-//   const {name, value} = event.target
-//   console.log("name :", name)
-//   const updatedFormInfo = {
-//     ...this.props.gifs[0].attributes,
-//     [name]: value
-//     // emotion_name: (statement) ? value_when_true : value_when_false,
-//     // humer_type_range: value
-//
-//   }
-//   // setState
-//   this.setState(updatedFormInfo)
-// }
-
-// handleInputChange = (event) => {
-//   const {name, value} = event.target
-//   console.log("name :", name)
-//   const updatedFormInfo = {
-//     ...this.props.gifs[0].attributes,
-//     [name]: value
-//
-//   }
-//   // setState
-//   this.setState(updatedFormInfo)
-// }
-
-// handleInputChange = (event) => {
-//   const {name, value} = event.target
-//   if (name === "emotion_name" && name != "humer_type_range" ) {
-//     const updatedFormInfo = {
-//       ...this.props.gifs[0].attributes,
-//       [name]:value
-//     }
-//     this.setState(updatedFormInfo)
-//   } else if (name === "humer_type_range" && name != "emotion_name" ) {
-//     const updatedFormInfo = {
-//       ...this.props.gifs[0].attributes,
-//       [name]:value
-//     }
-//     this.setState(updatedFormInfo)
-//   }
-//   // setState
-// }
+export default withRouter(connect(mapStateToProps, {deleteGif})(GifShowCard));
