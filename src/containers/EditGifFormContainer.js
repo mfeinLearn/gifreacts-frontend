@@ -15,42 +15,22 @@ class EditGifFormContainer extends React.Component {
   constructor() {
     super();
     this.state = {
-      humer_type_range: '',
-      emotion_name: ''
+      editForm: {
+        humer_type_range: '',
+        emotion_name: ''
+      }
     }
   }
 
-  // handleInputChange = (event) => {
-  //   const {name, value} = event.target
-  //   console.log("name :", name)
-  //   const updatedFormInfo = {
-  //     ...this.props.gifs[0].attributes,
-  //     [name]: value
-  //     // emotion_name: (statement) ? value_when_true : value_when_false,
-  //     // humer_type_range: value
-  //
-  //   }
-  //   // setState
-  //   this.setState(updatedFormInfo)
-  // }
-
-  handleEmotionNameInputChange = event => {
-  const { name, value } = event.target
-    const updatedFormInfo = {
-      ...this.props.gifs[0].attributes,
-    [name]: value
+  handleInputChange = (event) => {
+    const {name, value} = event.target
+    this.setState({
+      editForm: {
+        ...this.state.editForm,
+        [name]:value
+      }
+    })
   }
-    this.setState(updatedFormInfo)
-}
-
-handleHumerTypeRangeInputChange = event => {
-  const { name, value } = event.target
-    const updatedFormInfo = {
-      ...this.props.gifs[0].attributes,
-    [name]: value
-  }
-    this.setState(updatedFormInfo)
-}
 
   handleEditClick = (event) => {
       event.preventDefault()
@@ -58,9 +38,9 @@ handleHumerTypeRangeInputChange = event => {
       // console.log("result :",result)
       const id = parseInt(this.props.gif.id);
       // console.log("@@ an id of old gif:",id)
-      const gifHumerTypeRange = this.state.humer_type_range;
+      const gifHumerTypeRange = this.state.editForm.humer_type_range;
       // console.log("@@ gifHumerTypeRange",gifHumerTypeRange)
-      const gifEmotionName = this.state.emotion_name;
+      const gifEmotionName = this.state.editForm.emotion_name;
        // console.log("@@ gifEmotionName",gifEmotionName)
       const gif = {
                   id: this.props.gif.id,
@@ -89,9 +69,9 @@ handleHumerTypeRangeInputChange = event => {
     />
     <br />
       <label>emotion name - in Edit: </label>
-      <input type='text' placeholder='emotion name' defaultValue={this.props.gif.attributes.emotion_name} name="emotion_name" onChange={this.handleEmotionNameInputChange}/><br/>
+      <input type='text' placeholder='emotion name' defaultValue={this.props.gif.attributes.emotion_name} name="emotion_name" onChange={this.handleInputChange}/><br/>
       <label>humer type range - in Edit: </label>
-      <input type='text' placeholder='humer type range' defaultValue={this.props.gif.attributes.humer_type_range} name="humer_type_range" onChange={this.handleHumerTypeRangeInputChange}/><br/>
+      <input type='text' placeholder='humer type range' defaultValue={this.props.gif.attributes.humer_type_range} name="humer_type_range" onChange={this.handleInputChange}/><br/>
       <input type="submit"/>
   </form>
 
