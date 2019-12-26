@@ -84,15 +84,17 @@ const AllGifs = (props) => {
   const gifs = props.gifs.map((gif) => {
     let returnVal
     if (gif) {
-      returnVal = <div className="item">
-    <br />
-    <ColoredLine color="red" />
-    <li key={gif.id}><img height="200" width="200" key={gif.id} alt={gif.attributes.name} src={gif.attributes.name}/></li>
-    <br />
-    {renderEditAndDeleteButtons(gif)}
-     <HumerTypeDisplay humer_rating={gif.attributes.humer_type_range} key={Math.random()}/>
-    <br />
-    </div>
+      returnVal = <div key={gif.id} className="item">
+        <br />
+        <ColoredLine color="red" />
+        <ul>
+        <li ><img height="200" width="200" alt={gif.attributes.name} src={gif.attributes.name}/></li>
+        </ul>
+        <br />
+        {renderEditAndDeleteButtons(gif)}
+         <HumerTypeDisplay humer_rating={gif.attributes.humer_type_range} key={Math.random()}/>
+        <br />
+      </div> // [div, div, div, div]
       } else {
     returnVal = <div>
                   LOADING...
