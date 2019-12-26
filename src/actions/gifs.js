@@ -1,5 +1,5 @@
 export const setGif = gifs => {
-  console.log(gifs)
+  // console.log(gifs)
   return {
     type: "SET_GIFS",
     gifs

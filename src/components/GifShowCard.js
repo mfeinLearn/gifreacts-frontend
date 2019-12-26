@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom';
-import { editGifReaction } from '../actions/gifs'
  import { deleteGif } from '../actions/gifs'
 
 //NavLink - are great for nav bars when

@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { addGif } from "../actions/gifs.js"
-import AllGifs from "./AllGifs"
 
 class GifForm extends React.Component {
   // constructor(props) {

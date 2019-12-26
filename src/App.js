@@ -1,17 +1,9 @@
 import React from 'react';
 import './App.css';
 import { connect } from 'react-redux'
-// import axios from './api/axios.js'
-// import { setGifResponseData } from './actions/gifs.js'
-// import { fetchGifs } from './actions/gifs.js'
-
 import NavBar from './components/NavBar.js'
-// import SearchBar from './components/SearchBar.js';
-// import SingleGif from './components/SingleGif.js'
-// import GifList from './components/GifList.js'
 import { fetchGifs } from './actions/gifs'
 import Home from './components/Home.js'
-import Blank from './components/Blank.js'
 import AllGifs from './components/AllGifs.js'
 import NewGifFormContainer from './containers/NewGifFormContainer.js'
 import EditGifFormContainer from './containers/EditGifFormContainer.js'

@@ -5,6 +5,8 @@ import React from 'react';
 import { connect } from 'react-redux'
 import { deleteGif } from '../actions/gifs.js'
 import HumerTypeDisplay from './HumerTypeDisplay.js';
+import ColoredLine from './ColoredLine.js';
+
 //NavLink - are great for nav bars when
 //.. you are going to see those links all times
 // Link - is a one time thing
@@ -13,104 +15,78 @@ import HumerTypeDisplay from './HumerTypeDisplay.js';
 //   props.onSubmit();
 // }
 
-const AllGifs = (props) => {
+// class AllGifs = (props) => {
+class AllGifs extends React.Component {
+  state = { like: 0 };
+// ColoredLine = ({ color }) => (
+//     <hr
+//     style={{
+//       color: color,
+//       backgroundColor: color,
+//       height: 5
+//     }}
+//     />
+//   );
 
-  const handleClickOnEdit = (event, gif) => {
+handleClickOnEdit = (event, gif) => {
     event.preventDefault();
     // pass in gif id into push instead of 62
     //props.history.push('/gifs/62')
-    props.history.push(`/gifs/${gif.id}`)
+    this.props.history.push(`/gifs/${gif.id}`)
     console.log(`The Edit button was clicked. - /gifs/${gif.id}`);
   }
 
-
-  const handleClickOnDelete = (event, gif) =>  {
+handleClickOnLike = (event) => {
     event.preventDefault();
-    //console.log('The Delete button was clicked.');
-    props.deleteGif(gif, gif.id)
+    this.setState({
+      like: this.state.like + 1
+    })
   }
 
-  const ColoredLine = ({ color }) => (
-      <hr
-          style={{
-              color: color,
-              backgroundColor: color,
-              height: 5
-          }}
-      />
-  );
 
-  const renderEditAndDeleteButtons = (gif) => {
+// aCounter = () => {
+//     this.state.like
+//   }
+renderEditAndDeleteButtons = (gif) => {
     return (
       <div className="right floated content">
-         <button className="ui violet button" key={Math.random()} onClick={(event)=>handleClickOnEdit(event, gif)}>
+         <button className="ui violet button" key={Math.random()} onClick={(event)=>this.handleClickOnEdit(event, gif)}>
           Details
-      </button>
-      {/*  // <button className="ui button negative" key={Math.random()} onClick={(event) => handleClickOnDelete(event, gif)}>
-        //   Delete
-        // </button>*/}
+        </button>
+         <button className="ui violet button" key={Math.random()} onClick={(event)=>this.handleClickOnLike(event)}>
+          Number of likes {this.state.like}
+        </button>
       </div>
     );
   }
 
+render() {
+  const gifs = this.props.gifs.map((gif) => {
 
-  const renderNameAndRange = (gif) => {
-    return (
-      <div>
-      name: { gif.attributes.emotion_name }
-      <br />
-      range: {gif.attributes.humer_type_range}
-      </div>
 
-      /*
-      <form className="item">
-        <br />
-        <input
-          placeholder="emotion"
-          name="emotion"
-          type="text"
-        />
-        <input
-          placeholder="humer type"
-          name="humer type"
-          type="text"
-        />
-        <input type="submit" value="Submit" />
-      </form>
-      */
-    );
-  }
-
-  const gifs = props.gifs.map((gif) => {
-    let returnVal
-    if (gif) {
-      returnVal = <div key={gif.id} className="item">
+    return(
+      <div key={gif.id} className="item">
         <br />
         <ColoredLine color="red" />
         <ul>
         <li ><img height="200" width="200" alt={gif.attributes.name} src={gif.attributes.name}/></li>
         </ul>
         <br />
-        {renderEditAndDeleteButtons(gif)}
+        {this.renderEditAndDeleteButtons(gif)}
          <HumerTypeDisplay humer_rating={gif.attributes.humer_type_range} key={Math.random()}/>
         <br />
-      </div> // [div, div, div, div]
-      } else {
-    returnVal = <div>
-                  LOADING...
-                </div>
-    }
-    return(
-    returnVal
-    );
-  });
+      </div>
+      );
 
-  return gifs;
-};
+    })
+    return gifs;
+  }
 
-
+}
 const mapStateToProps = (state) => {
-  return {gifs: state.gifs}
+  return {
+    gifs: state.gifs
+  }
 }
 
 export default connect(mapStateToProps, { deleteGif })(AllGifs);
