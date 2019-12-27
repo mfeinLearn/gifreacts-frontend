@@ -102,12 +102,18 @@ class GifShowCard extends React.Component {
       src={this.props.gif.attributes.name}
     />
     <br />
-      <label>Emotion: </label><strong>{this.props.gif.attributes.emotion_name} </strong>
-          <br />
-      <label>humer: </label><strong>{this.props.gif.attributes.humer_type_range}</strong>
-      {/*this.props.match.params.id ? renderEditButton(this.props.gif) : ""*/}
-      {/*some: this.props.match.params.id*/}
-      {/*renderEditButton(this.props.gif)*/}
+          {this.props.match.params.id
+            ?
+
+            <div>
+            <label>Emotion: </label><strong>{this.props.gif.attributes.emotion_name} </strong>
+            <br />
+            <label>humer: </label><strong>{this.props.gif.attributes.humer_type_range}</strong>
+            </div>
+            :
+                        ""
+          }
+
       {this.props.match.params.id ? renderEditButton(this.props.gif) : renderDetailsAndLikeButton(this.props.gif)}
   </form>
 
