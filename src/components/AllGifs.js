@@ -4,6 +4,7 @@ import React from 'react';
 // import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { deleteGif } from '../actions/gifs.js'
+import GifShowCard from './GifShowCard.js';
 import HumerTypeDisplay from './HumerTypeDisplay.js';
 import ColoredLine from './ColoredLine.js';
 
@@ -28,13 +29,13 @@ class AllGifs extends React.Component {
 //     />
 //   );
 
-handleClickOnEdit = (event, gif) => {
-    event.preventDefault();
-    // pass in gif id into push instead of 62
-    //props.history.push('/gifs/62')
-    this.props.history.push(`/gifs/${gif.id}`)
-    console.log(`The Edit button was clicked. - /gifs/${gif.id}`);
-  }
+// handleClickOnEdit = (event, gif) => {
+//     event.preventDefault();
+//     // pass in gif id into push instead of 62
+//     //props.history.push('/gifs/62')
+//     this.props.history.push(`/gifs/${gif.id}`)
+//     console.log(`The Edit button was clicked. - /gifs/${gif.id}`);
+//   }
 
 handleClickOnLike = (event) => {
     event.preventDefault();
@@ -47,18 +48,18 @@ handleClickOnLike = (event) => {
 // aCounter = () => {
 //     this.state.like
 //   }
-renderEditAndDeleteButtons = (gif) => {
-    return (
-      <div className="right floated content">
-         <button className="ui violet button" key={Math.random()} onClick={(event)=>this.handleClickOnEdit(event, gif)}>
-          Details
-        </button>
-         <button className="ui violet button" key={Math.random()} onClick={(event)=>this.handleClickOnLike(event)}>
-          Number of likes {this.state.like}
-        </button>
-      </div>
-    );
-  }
+// renderEditAndDeleteButtons = (gif) => {
+//     return (
+//       <div className="right floated content">
+//          <button className="ui violet button" key={Math.random()} onClick={(event)=>this.handleClickOnEdit(event, gif)}>
+//           Details
+//         </button>
+//       {/*  //  <button className="ui violet button" key={Math.random()} onClick={(event)=>this.handleClickOnLike(event)}>
+//         //   Number of likes {this.state.like}
+//         // </button> */}
+//       </div>
+//     );
+//   }
 
 render() {
   const gifs = this.props.gifs.map((gif) => {
@@ -67,12 +68,13 @@ render() {
     return(
       <div key={gif.id} className="item">
         <br />
-        <ColoredLine color="red" />
-        <ul>
-        <li ><img height="200" width="200" alt={gif.attributes.name} src={gif.attributes.name}/></li>
-        </ul>
+        <ColoredLine key={Math.random()} color="red" />
+      {/*  // <ul>
+        // <li ><img height="200" width="200" alt={gif.attributes.name} src={gif.attributes.name}/></li>
+        // </ul>*/}
         <br />
-        {this.renderEditAndDeleteButtons(gif)}
+        {/*this.renderEditAndDeleteButtons(gif)*/}
+        <GifShowCard gif={gif}/>
          <HumerTypeDisplay humer_rating={gif.attributes.humer_type_range} key={Math.random()}/>
         <br />
       </div>
