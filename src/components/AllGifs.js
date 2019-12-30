@@ -63,8 +63,10 @@ render() {
     return(
       <div>
       <form onSubmit={this.onFormSubmit}>
-      <label>view all of the gifs of a specific humer number:</label>
+      <label><b>Type a specific humer number to view all of its gifs:</b></label>
+      <br/>
        <input
+         placeholder="(1 - 5)"
          type="text"
          value={this.state.humer_number}
          onChange={(e) => this.setState({ humer_number: e.target.value })}
