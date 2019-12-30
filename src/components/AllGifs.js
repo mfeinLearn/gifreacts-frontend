@@ -12,30 +12,8 @@ import ColoredLine from './ColoredLine.js';
 //.. you are going to see those links all times
 // Link - is a one time thing
 
-// const iwascalled = (props) => {
-//   props.onSubmit();
-// }
-
-// class AllGifs = (props) => {
 class AllGifs extends React.Component {
-  state = { like: 0 };
-// ColoredLine = ({ color }) => (
-//     <hr
-//     style={{
-//       color: color,
-//       backgroundColor: color,
-//       height: 5
-//     }}
-//     />
-//   );
-
-// handleClickOnEdit = (event, gif) => {
-//     event.preventDefault();
-//     // pass in gif id into push instead of 62
-//     //props.history.push('/gifs/62')
-//     this.props.history.push(`/gifs/${gif.id}`)
-//     console.log(`The Edit button was clicked. - /gifs/${gif.id}`);
-//   }
+   state = { humer_number: null };
 
 handleClickOnLike = (event) => {
     event.preventDefault();
@@ -44,44 +22,57 @@ handleClickOnLike = (event) => {
     })
   }
 
+  onFormSubmit = (event) =>{
+        event.preventDefault();
+  }
 
-// aCounter = () => {
-//     this.state.like
-//   }
-// renderEditAndDeleteButtons = (gif) => {
-//     return (
-//       <div className="right floated content">
-//          <button className="ui violet button" key={Math.random()} onClick={(event)=>this.handleClickOnEdit(event, gif)}>
-//           Details
-//         </button>
-//       {/*  //  <button className="ui violet button" key={Math.random()} onClick={(event)=>this.handleClickOnLike(event)}>
-//         //   Number of likes {this.state.like}
-//         // </button> */}
-//       </div>
-//     );
-//   }
+  renderGifsByHumerNumber = (gifs) => {
+      if (this.state.humer_number === null) {
+        return gifs.map((gif) => {
+         return(
+           <div key={gif.id} className="item">
+             <br />
+             <ColoredLine key={Math.random()} color="red" />
+             <br />
+             <GifShowCard gif={gif}/>
+              <HumerTypeDisplay humer_rating={gif.attributes.humer_type_range} key={Math.random()}/>
+             <br />
+           </div>
+           );
+         })
+      } else {
+        return gifs.filter(gif => parseInt(this.state.humer_number) === gif.attributes.humer_type_range).map((gif) => {
+            return(
+
+              <div key={gif.id} className="item">
+                <br />
+                <ColoredLine key={Math.random()} color="red" />
+                <br />
+                <GifShowCard gif={gif}/>
+                 <HumerTypeDisplay humer_rating={gif.attributes.humer_type_range} key={Math.random()}/>
+                <br />
+              </div>
+              );
+            })
+      }
+
+  }
 
 render() {
-  const gifs = this.props.gifs.map((gif) => {
-
-
+  const gifs = this.renderGifsByHumerNumber(this.props.gifs)
     return(
-      <div key={gif.id} className="item">
-        <br />
-        <ColoredLine key={Math.random()} color="red" />
-      {/*  // <ul>
-        // <li ><img height="200" width="200" alt={gif.attributes.name} src={gif.attributes.name}/></li>
-        // </ul>*/}
-        <br />
-        {/*this.renderEditAndDeleteButtons(gif)*/}
-        <GifShowCard gif={gif}/>
-         <HumerTypeDisplay humer_rating={gif.attributes.humer_type_range} key={Math.random()}/>
-        <br />
+      <div>
+      <form onSubmit={this.onFormSubmit}>
+      <label>view all of the gifs of a specific humer number:</label>
+       <input
+         type="text"
+         value={this.state.humer_number}
+         onChange={(e) => this.setState({ humer_number: e.target.value })}
+       />
+      </form>
+      {gifs}
       </div>
-      );
-
-    })
-    return gifs;
+    )
   }
 
 }
